@@ -7,16 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ============ RESET & GLOBAL ============ */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: #f7f9fc;
@@ -25,38 +17,25 @@
       overflow-x: hidden;
     }
 
-    /* Background cerah */
     .bg-pattern {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background:
         radial-gradient(circle at 15% 15%, rgba(22, 163, 74, 0.08), transparent 45%),
         radial-gradient(circle at 85% 25%, rgba(59, 130, 246, 0.06), transparent 45%),
         radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.06), transparent 50%);
       z-index: -2;
     }
-
     .bg-dots {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image: radial-gradient(rgba(26, 34, 56, 0.06) 1px, transparent 1px);
       background-size: 24px 24px;
-      z-index: -1;
-      pointer-events: none;
+      z-index: -1; pointer-events: none;
     }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ============ HEADER ============ */
+    /* HEADER */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
+      position: fixed; top: 0; left: 0; width: 100%;
       padding: 14px 0;
       background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(14px);
@@ -65,23 +44,12 @@
       z-index: 100;
       transition: all 0.3s ease;
     }
+    nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo-wrap { display: flex; align-items: center; gap: 12px; }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* Logo Sekolah */
+    /* ============ LOGO SEKOLAH ============ */
     .logo-sekolah {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       border-radius: 50%;
       object-fit: contain;
       background: #fff;
@@ -91,1067 +59,541 @@
       flex-shrink: 0;
       transition: transform 0.3s ease;
     }
+    .logo-wrap:hover .logo-sekolah { transform: scale(1.05) rotate(-3deg); }
 
-    .logo-wrap:hover .logo-sekolah {
-      transform: scale(1.05) rotate(-3deg);
-    }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-text .brand { font-size: 16px; font-weight: 800; color: #15803d; letter-spacing: -0.3px; }
+    .logo-text .school { font-size: 10px; font-weight: 700; color: #ff6b35; letter-spacing: 1px; text-transform: uppercase; }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
-    }
-
-    .logo-text .brand {
-      font-size: 16px;
-      font-weight: 800;
-      color: #15803d;
-      letter-spacing: -0.3px;
-    }
-
-    .logo-text .school {
-      font-size: 10px;
-      font-weight: 700;
-      color: #ff6b35;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    /* Desktop Navigation */
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
-      color: #4a5568;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      transition: color 0.2s;
-      position: relative;
+      color: #4a5568; text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: color 0.2s; position: relative;
     }
-
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0%;
-      height: 3px;
+      content: ''; position: absolute; bottom: -6px; left: 0;
+      width: 0%; height: 3px;
       background: linear-gradient(90deg, #16a34a, #ff6b35);
-      border-radius: 3px;
-      transition: width 0.3s ease;
+      border-radius: 3px; transition: width 0.3s ease;
     }
-
     .nav-links a:hover { color: #16a34a; }
     .nav-links a:hover::after { width: 100%; }
 
-    /* Hamburger Menu */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px;
-      background: transparent;
-      border: none;
-      z-index: 110;
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 8px; background: transparent;
+      border: none; z-index: 110;
     }
-
     .hamburger span {
-      display: block;
-      width: 26px;
-      height: 3px;
-      background: #1a2238;
-      border-radius: 3px;
-      transition: all 0.3s ease;
+      display: block; width: 26px; height: 3px;
+      background: #1a2238; border-radius: 3px; transition: all 0.3s ease;
     }
-
     .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* Mobile Menu */
     .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 280px;
-      height: 100vh;
+      position: fixed; top: 0; right: -100%;
+      width: 280px; height: 100vh;
       background: #fff;
       box-shadow: -10px 0 40px rgba(26, 34, 56, 0.15);
       padding: 100px 30px 30px;
       transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 105;
     }
-
     .mobile-menu.active { right: 0; }
-
     .mobile-menu .menu-logo {
-      text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
+      text-align: center; margin-bottom: 30px; padding-bottom: 20px;
       border-bottom: 1px solid #eef2f7;
     }
-
     .mobile-menu .menu-logo img {
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
-      margin-bottom: 10px;
+      width: 70px; height: 70px; object-fit: contain; margin-bottom: 10px;
     }
-
     .mobile-menu .menu-logo p {
-      font-size: 12px;
-      color: #15803d;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-size: 12px; color: #15803d; font-weight: 700; letter-spacing: 0.5px;
     }
-
     .mobile-menu ul { list-style: none; }
-
     .mobile-menu ul li { margin-bottom: 8px; }
-
     .mobile-menu ul li a {
-      display: block;
-      padding: 14px 18px;
-      color: #1a2238;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
-      border-radius: 12px;
-      transition: all 0.25s ease;
+      display: block; padding: 14px 18px; color: #1a2238;
+      text-decoration: none; font-weight: 600; font-size: 15px;
+      border-radius: 12px; transition: all 0.25s ease;
     }
-
-    .mobile-menu ul li a:hover,
-    .mobile-menu ul li a:active {
-      background: #f0fdf4;
-      color: #16a34a;
-      transform: translateX(5px);
+    .mobile-menu ul li a:hover, .mobile-menu ul li a:active {
+      background: #f0fdf4; color: #16a34a; transform: translateX(5px);
     }
-
     .mobile-menu ul li a i {
-      margin-right: 12px;
-      width: 20px;
-      color: #16a34a;
+      margin-right: 12px; width: 20px; color: #16a34a;
     }
 
     .menu-overlay {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(26, 34, 56, 0.4);
       backdrop-filter: blur(4px);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 104;
+      opacity: 0; visibility: hidden;
+      transition: all 0.3s ease; z-index: 104;
     }
-
     .menu-overlay.active { opacity: 1; visibility: visible; }
 
-    /* ============ HERO ============ */
+    /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 100px;
-      padding-bottom: 60px;
-      position: relative;
-      overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center;
+      padding-top: 100px; padding-bottom: 60px;
+      position: relative; overflow: hidden;
     }
-
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 60px;
-      align-items: center;
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      gap: 60px; align-items: center;
     }
-
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      background: #f0fdf4;
-      border: 1.5px solid #bbf7d0;
-      border-radius: 40px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: #16a34a;
-      margin-bottom: 22px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 18px; background: #f0fdf4;
+      border: 1.5px solid #bbf7d0; border-radius: 40px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+      color: #16a34a; margin-bottom: 22px;
     }
-
-    .hero-badge i {
-      font-size: 8px;
-      animation: pulse-dot 2s infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+    .hero-badge i { font-size: 8px; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
     .hero h1 {
       font-size: clamp(34px, 5.5vw, 64px);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -2px;
-      color: #1a2238;
-      margin-bottom: 20px;
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -2px; color: #1a2238; margin-bottom: 20px;
     }
-
     .hero h1 .highlight {
       background: linear-gradient(135deg, #16a34a, #f7b801, #ff6b35);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-
     .hero p {
-      font-size: 16px;
-      color: #4a5568;
-      max-width: 560px;
-      margin-bottom: 32px;
+      font-size: 16px; color: #4a5568;
+      max-width: 560px; margin-bottom: 32px;
     }
-
     .cta-group {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 36px;
+      display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px;
     }
-
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 30px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 15px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 14px 30px; border-radius: 50px;
+      font-weight: 700; font-size: 15px; text-decoration: none;
+      transition: all 0.3s ease; border: none; cursor: pointer;
       white-space: nowrap;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #16a34a, #f7b801);
-      color: #fff;
-      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.35);
+      color: #fff; box-shadow: 0 10px 25px rgba(22, 163, 74, 0.35);
     }
-
     .btn-primary:hover, .btn-primary:active {
       transform: translateY(-3px);
       box-shadow: 0 15px 35px rgba(22, 163, 74, 0.5);
     }
-
     .btn-outline {
-      background: #fff;
-      color: #1a2238;
-      border: 2px solid #e2e8f0;
+      background: #fff; color: #1a2238; border: 2px solid #e2e8f0;
     }
-
     .btn-outline:hover, .btn-outline:active {
-      border-color: #16a34a;
-      color: #16a34a;
-      transform: translateY(-3px);
+      border-color: #16a34a; color: #16a34a; transform: translateY(-3px);
     }
 
-    /* Hero Visual */
     .hero-visual {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      position: relative; display: flex;
+      justify-content: center; align-items: center;
     }
-
     .tv-frame {
-      width: 100%;
-      max-width: 460px;
-      aspect-ratio: 16/10;
-      background: #1a2238;
-      border-radius: 24px;
-      padding: 14px;
+      width: 100%; max-width: 460px;
+      aspect-ratio: 16/10; background: #1a2238;
+      border-radius: 24px; padding: 14px;
       box-shadow: 0 30px 60px -15px rgba(26, 34, 56, 0.4);
       position: relative;
       transform: perspective(1000px) rotateY(-6deg) rotateX(3deg);
       transition: transform 0.5s ease;
     }
-
-    .tv-frame:hover {
-      transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
-    }
-
+    .tv-frame:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
     .tv-screen {
-      width: 100%;
-      height: 100%;
-      border-radius: 14px;
+      width: 100%; height: 100%; border-radius: 14px;
       background: linear-gradient(135deg, #15803d, #16a34a, #f7b801);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
     }
-
     .tv-screen::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px);
     }
-
     .tv-content {
-      text-align: center;
-      color: #fff;
-      z-index: 2;
-      position: relative;
-      padding: 0 20px;
+      text-align: center; color: #fff; z-index: 2;
+      position: relative; padding: 0 20px;
     }
-
     .tv-content .tv-logo {
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
+      width: 70px; height: 70px; object-fit: contain;
       margin-bottom: 12px;
       filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
       background: rgba(255,255,255,0.95);
-      border-radius: 50%;
-      padding: 4px;
+      border-radius: 50%; padding: 4px;
     }
-
     .tv-content .live-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #ef4444;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-      animation: blink 1.5s infinite;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #ef4444; padding: 5px 12px; border-radius: 20px;
+      font-size: 11px; font-weight: 800; letter-spacing: 1px;
+      margin-bottom: 10px; animation: blink 1.5s infinite;
     }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
     .live-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: #fff;
-      border-radius: 50%;
+      content: ''; width: 8px; height: 8px;
+      background: #fff; border-radius: 50%;
     }
-
     .tv-content h3 {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
+      font-size: 22px; font-weight: 800; letter-spacing: 1px; margin-bottom: 6px;
     }
-
     .tv-content p {
-      font-size: 12px;
-      opacity: 0.9;
-      margin: 0;
-      color: #fff;
-      font-weight: 500;
+      font-size: 12px; opacity: 0.9; margin: 0;
+      color: #fff; font-weight: 500;
     }
-
     .tv-stand {
-      position: absolute;
-      bottom: -22px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 12px;
-      background: #1a2238;
-      border-radius: 0 0 10px 10px;
+      position: absolute; bottom: -22px; left: 50%;
+      transform: translateX(-50%); width: 100px; height: 12px;
+      background: #1a2238; border-radius: 0 0 10px 10px;
     }
-
     .tv-stand::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 6px;
-      background: #1a2238;
-      border-radius: 10px;
+      content: ''; position: absolute; bottom: -6px; left: 50%;
+      transform: translateX(-50%); width: 200px; height: 6px;
+      background: #1a2238; border-radius: 10px;
     }
 
     .float-badge {
-      position: absolute;
-      background: #fff;
-      padding: 10px 16px;
-      border-radius: 14px;
+      position: absolute; background: #fff;
+      padding: 10px 16px; border-radius: 14px;
       box-shadow: 0 12px 30px rgba(26, 34, 56, 0.12);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #1a2238;
-      animation: floaty 4s ease-in-out infinite;
-      white-space: nowrap;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; color: #1a2238;
+      animation: floaty 4s ease-in-out infinite; white-space: nowrap;
     }
-
-    .float-badge i {
-      color: #16a34a;
-      font-size: 16px;
-    }
-
+    .float-badge i { color: #16a34a; font-size: 16px; }
     .float-badge.b1 { top: 5%; left: -5%; animation-delay: 0s; }
     .float-badge.b2 { bottom: 15%; right: -8%; animation-delay: -1.5s; }
     .float-badge.b3 { bottom: -5%; left: 15%; animation-delay: -3s; }
-
     @keyframes floaty {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-14px); }
     }
 
-    /* ============ STATS ============ */
+    /* STATS */
     .stats {
-      padding: 50px 0;
-      background: #fff;
-      border-top: 1px solid #eef2f7;
-      border-bottom: 1px solid #eef2f7;
+      padding: 50px 0; background: #fff;
+      border-top: 1px solid #eef2f7; border-bottom: 1px solid #eef2f7;
     }
-
     .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-      text-align: center;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 30px; text-align: center;
     }
-
     .stat-item h3 {
-      font-size: 42px;
-      font-weight: 900;
+      font-size: 42px; font-weight: 900;
       background: linear-gradient(135deg, #16a34a, #f7b801);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      line-height: 1;
-      margin-bottom: 8px;
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent; line-height: 1; margin-bottom: 8px;
     }
-
     .stat-item p {
-      font-size: 13px;
-      color: #4a5568;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-size: 13px; color: #4a5568;
+      font-weight: 700; letter-spacing: 0.5px;
     }
 
-    /* ============ SECTION UMUM ============ */
     section { padding: 90px 0; }
-
     .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 60px;
+      text-align: center; max-width: 700px; margin: 0 auto 60px;
     }
-
     .section-title {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #16a34a;
-      background: #f0fdf4;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 16px;
+      display: inline-block; font-size: 12px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: #16a34a; background: #f0fdf4;
+      padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
     }
-
     .section-heading {
-      font-size: clamp(26px, 4vw, 42px);
-      font-weight: 900;
-      letter-spacing: -1.5px;
-      color: #1a2238;
-      line-height: 1.15;
-      margin-bottom: 16px;
+      font-size: clamp(26px, 4vw, 42px); font-weight: 900;
+      letter-spacing: -1.5px; color: #1a2238;
+      line-height: 1.15; margin-bottom: 16px;
     }
+    .section-desc { color: #4a5568; font-size: 15px; }
 
-    .section-desc {
-      color: #4a5568;
-      font-size: 15px;
-    }
-
-    /* ============ ABOUT ============ */
-    .about {
-      background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
-    }
-
+    /* ABOUT */
+    .about { background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%); }
     .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center;
     }
-
     .about-visual { position: relative; }
-
     .about-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      border-radius: 28px;
+      width: 100%; aspect-ratio: 4/3; border-radius: 28px;
       background: linear-gradient(135deg, #16a34a, #22c55e, #f7b801);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       box-shadow: 0 30px 60px -20px rgba(22, 163, 74, 0.4);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
     .about-img::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 2px, transparent 2px, transparent 20px);
     }
-
-    /* Logo besar di About */
     .about-img .about-logo {
-      width: 220px;
-      height: 220px;
-      object-fit: contain;
+      width: 220px; height: 220px; object-fit: contain;
       z-index: 2;
       filter: drop-shadow(0 15px 35px rgba(0,0,0,0.35));
-      background: #fff;
-      border-radius: 50%;
-      padding: 12px;
+      background: #fff; border-radius: 50%; padding: 12px;
       box-shadow: 0 0 0 8px rgba(255,255,255,0.4);
     }
-
     .about-img-2 {
-      position: absolute;
-      bottom: -30px;
-      right: -30px;
-      width: 160px;
-      height: 160px;
-      border-radius: 24px;
+      position: absolute; bottom: -30px; right: -30px;
+      width: 160px; height: 160px; border-radius: 24px;
       background: #1a2238;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       box-shadow: 0 20px 40px rgba(26, 34, 56, 0.3);
       border: 6px solid #fff;
     }
-
-    .about-img-2 i {
-      font-size: 54px;
-      color: #f7b801;
-    }
-
+    .about-img-2 i { font-size: 54px; color: #f7b801; }
     .about-text h2 {
-      font-size: clamp(24px, 3.5vw, 38px);
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: #1a2238;
-      margin-bottom: 20px;
-      line-height: 1.2;
+      font-size: clamp(24px, 3.5vw, 38px); font-weight: 900;
+      letter-spacing: -1px; color: #1a2238;
+      margin-bottom: 20px; line-height: 1.2;
     }
-
-    .about-text p {
-      color: #4a5568;
-      font-size: 15px;
-      margin-bottom: 16px;
-    }
-
-    .about-list {
-      list-style: none;
-      margin-top: 26px;
-    }
-
+    .about-text p { color: #4a5568; font-size: 15px; margin-bottom: 16px; }
+    .about-list { list-style: none; margin-top: 26px; }
     .about-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 8px 0;
-      color: #1a2238;
-      font-weight: 500;
-      font-size: 15px;
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 8px 0; color: #1a2238; font-weight: 500; font-size: 15px;
     }
-
     .about-list li i {
-      width: 26px;
-      height: 26px;
-      background: #f0fdf4;
-      color: #16a34a;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      flex-shrink: 0;
-      margin-top: 2px;
+      width: 26px; height: 26px; background: #f0fdf4;
+      color: #16a34a; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0; margin-top: 2px;
     }
 
-    /* ============ MATERI ============ */
+    /* MATERI */
     .materi { background: #fff; }
-
     .materi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
     }
-
     .materi-card {
-      background: #f7f9fc;
-      border: 2px solid transparent;
-      border-radius: 24px;
-      padding: 32px 26px;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
+      background: #f7f9fc; border: 2px solid transparent;
+      border-radius: 24px; padding: 32px 26px;
+      transition: all 0.4s ease; position: relative; overflow: hidden;
     }
-
     .materi-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 5px;
       background: linear-gradient(90deg, #16a34a, #f7b801);
-      transform: scaleX(0);
-      transform-origin: left;
+      transform: scaleX(0); transform-origin: left;
       transition: transform 0.4s ease;
     }
-
     .materi-card:hover {
-      background: #fff;
-      border-color: #dcfce7;
+      background: #fff; border-color: #dcfce7;
       transform: translateY(-8px);
       box-shadow: 0 25px 50px -20px rgba(22, 163, 74, 0.25);
     }
-
     .materi-card:hover::before { transform: scaleX(1); }
-
     .materi-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      margin-bottom: 20px;
-      color: #fff;
+      width: 60px; height: 60px; border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin-bottom: 20px; color: #fff;
     }
-
     .materi-icon.c1 { background: linear-gradient(135deg, #16a34a, #22c55e); }
     .materi-icon.c2 { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
     .materi-icon.c3 { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
     .materi-icon.c4 { background: linear-gradient(135deg, #f59e0b, #f7b801); }
     .materi-icon.c5 { background: linear-gradient(135deg, #ef4444, #f97316); }
     .materi-icon.c6 { background: linear-gradient(135deg, #0ea5e9, #14b8a6); }
+    .materi-card h3 { font-size: 18px; font-weight: 800; color: #1a2238; margin-bottom: 10px; }
+    .materi-card p { font-size: 14px; color: #4a5568; line-height: 1.6; }
 
-    .materi-card h3 {
-      font-size: 18px;
-      font-weight: 800;
-      color: #1a2238;
-      margin-bottom: 10px;
-    }
-
-    .materi-card p {
-      font-size: 14px;
-      color: #4a5568;
-      line-height: 1.6;
-    }
-
-    /* ============ FASILITAS ============ */
-    .fasilitas {
-      background: linear-gradient(180deg, #fff 0%, #f7f9fc 100%);
-    }
-
+    /* FASILITAS */
+    .fasilitas { background: linear-gradient(180deg, #fff 0%, #f7f9fc 100%); }
     .fasilitas-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
     }
-
     .fasilitas-item {
-      background: #fff;
-      border-radius: 22px;
-      padding: 30px 24px;
-      text-align: center;
-      border: 2px solid #eef2f7;
+      background: #fff; border-radius: 22px; padding: 30px 24px;
+      text-align: center; border: 2px solid #eef2f7;
       transition: all 0.35s ease;
     }
-
     .fasilitas-item:hover {
-      border-color: #bbf7d0;
-      transform: translateY(-6px);
+      border-color: #bbf7d0; transform: translateY(-6px);
       box-shadow: 0 20px 40px -15px rgba(22, 163, 74, 0.2);
     }
-
     .fasilitas-item i {
-      font-size: 38px;
-      margin-bottom: 16px;
+      font-size: 38px; margin-bottom: 16px;
       background: linear-gradient(135deg, #16a34a, #f7b801);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
+    .fasilitas-item h4 { font-size: 16px; font-weight: 800; color: #1a2238; margin-bottom: 8px; }
+    .fasilitas-item p { font-size: 13px; color: #64748b; }
 
-    .fasilitas-item h4 {
-      font-size: 16px;
-      font-weight: 800;
-      color: #1a2238;
-      margin-bottom: 8px;
-    }
-
-    .fasilitas-item p {
-      font-size: 13px;
-      color: #64748b;
-    }
-
-    /* ============ KARIR ============ */
+    /* KARIR */
     .karir {
-      background: #0f2e1a;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
+      background: #0f2e1a; color: #fff;
+      position: relative; overflow: hidden;
     }
-
     .karir::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 400px;
-      height: 400px;
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 400px; height: 400px;
       background: radial-gradient(circle, rgba(22, 163, 74, 0.4), transparent 70%);
       border-radius: 50%;
     }
-
     .karir::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      left: -100px;
-      width: 400px;
-      height: 400px;
+      content: ''; position: absolute; bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
       background: radial-gradient(circle, rgba(247, 184, 1, 0.2), transparent 70%);
       border-radius: 50%;
     }
-
     .karir .section-header { position: relative; z-index: 2; }
     .karir .section-title { background: rgba(22, 163, 74, 0.25); color: #86efac; }
     .karir .section-heading { color: #fff; }
     .karir .section-desc { color: #cbd5e1; }
-
     .karir-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      position: relative;
-      z-index: 2;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; position: relative; z-index: 2;
     }
-
     .karir-card {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 30px 24px;
-      text-align: center;
-      transition: all 0.35s ease;
-      backdrop-filter: blur(10px);
+      border-radius: 20px; padding: 30px 24px; text-align: center;
+      transition: all 0.35s ease; backdrop-filter: blur(10px);
     }
-
     .karir-card:hover {
       background: rgba(22, 163, 74, 0.2);
       border-color: rgba(134, 239, 172, 0.5);
       transform: translateY(-6px);
     }
+    .karir-card i { font-size: 36px; color: #86efac; margin-bottom: 16px; }
+    .karir-card h4 { font-size: 16px; font-weight: 800; margin-bottom: 8px; }
+    .karir-card p { font-size: 13px; color: #cbd5e1; }
 
-    .karir-card i {
-      font-size: 36px;
-      color: #86efac;
-      margin-bottom: 16px;
-    }
-
-    .karir-card h4 {
-      font-size: 16px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .karir-card p {
-      font-size: 13px;
-      color: #cbd5e1;
-    }
-
-    /* ============ CTA ============ */
+    /* CTA */
     .cta-section { padding: 90px 0; }
-
     .cta-box {
       background: linear-gradient(135deg, #16a34a, #f7b801);
-      border-radius: 36px;
-      padding: 70px 50px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      border-radius: 36px; padding: 70px 50px; text-align: center;
+      position: relative; overflow: hidden;
       box-shadow: 0 40px 80px -25px rgba(22, 163, 74, 0.5);
     }
-
     .cta-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
+      content: ''; position: absolute; top: -50%; right: -10%;
+      width: 400px; height: 400px;
+      background: rgba(255, 255, 255, 0.1); border-radius: 50%;
     }
-
     .cta-box::after {
-      content: '';
-      position: absolute;
-      bottom: -50%;
-      left: -10%;
-      width: 300px;
-      height: 300px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
+      content: ''; position: absolute; bottom: -50%; left: -10%;
+      width: 300px; height: 300px;
+      background: rgba(255, 255, 255, 0.08); border-radius: 50%;
     }
-
     .cta-logo {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 2;
-      background: #fff;
-      border-radius: 50%;
-      padding: 6px;
+      width: 80px; height: 80px; object-fit: contain;
+      margin-bottom: 20px; position: relative; z-index: 2;
+      background: #fff; border-radius: 50%; padding: 6px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
-
     .cta-box h2 {
-      font-size: clamp(26px, 4.5vw, 44px);
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -1.5px;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 2;
-      line-height: 1.2;
+      font-size: clamp(26px, 4.5vw, 44px); font-weight: 900;
+      color: #fff; letter-spacing: -1.5px; margin-bottom: 16px;
+      position: relative; z-index: 2; line-height: 1.2;
     }
-
     .cta-box p {
-      color: rgba(255, 255, 255, 0.95);
-      font-size: 16px;
-      max-width: 550px;
-      margin: 0 auto 36px;
-      position: relative;
-      z-index: 2;
+      color: rgba(255, 255, 255, 0.95); font-size: 16px;
+      max-width: 550px; margin: 0 auto 36px;
+      position: relative; z-index: 2;
     }
-
     .btn-white {
-      background: #fff;
-      color: #16a34a;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      background: #fff; color: #16a34a; position: relative;
+      z-index: 2; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     }
-
     .btn-white:hover, .btn-white:active {
       transform: translateY(-3px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     }
 
-    /* ============ FOOTER ============ */
-    footer {
-      background: #0a1f12;
-      color: #cbd5e1;
-      padding: 60px 0 30px;
-    }
-
+    /* FOOTER */
+    footer { background: #0a1f12; color: #cbd5e1; padding: 60px 0 30px; }
     .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 50px;
-      margin-bottom: 50px;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 50px; margin-bottom: 50px;
     }
-
     .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
     }
-
     .footer-brand img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      background: #fff;
-      border-radius: 50%;
-      padding: 3px;
+      width: 50px; height: 50px; object-fit: contain;
+      background: #fff; border-radius: 50%; padding: 3px;
     }
-
-    .footer-brand-text .brand {
-      font-size: 16px;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .footer-brand-text .school {
-      font-size: 10px;
-      color: #86efac;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
+    .footer-brand-text .brand { font-size: 16px; font-weight: 800; color: #fff; }
+    .footer-brand-text .school { font-size: 10px; color: #86efac; font-weight: 700; letter-spacing: 1px; }
     .footer-about p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #94a3b8;
-      margin-bottom: 20px;
+      font-size: 14px; line-height: 1.7;
+      color: #94a3b8; margin-bottom: 20px;
     }
-
-    .footer-social {
-      display: flex;
-      gap: 12px;
-    }
-
+    .footer-social { display: flex; gap: 12px; }
     .footer-social a {
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #cbd5e1;
-      text-decoration: none;
-      transition: all 0.3s;
+      width: 40px; height: 40px; background: rgba(255, 255, 255, 0.06);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      color: #cbd5e1; text-decoration: none; transition: all 0.3s;
     }
-
     .footer-social a:hover {
-      background: #16a34a;
-      color: #fff;
-      transform: translateY(-3px);
+      background: #16a34a; color: #fff; transform: translateY(-3px);
     }
-
-    .footer-col h4 {
-      color: #fff;
-      font-size: 15px;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
+    .footer-col h4 { color: #fff; font-size: 15px; font-weight: 800; margin-bottom: 20px; }
     .footer-col ul { list-style: none; }
-
     .footer-col ul li { margin-bottom: 12px; }
-
-    .footer-col ul li a,
-    .footer-col ul li span {
-      color: #94a3b8;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
+    .footer-col ul li a, .footer-col ul li span {
+      color: #94a3b8; text-decoration: none; font-size: 14px;
+      transition: color 0.2s; display: flex; align-items: flex-start; gap: 10px;
     }
-
     .footer-col ul li a:hover { color: #86efac; }
-
     .footer-col ul li i {
-      color: #86efac;
-      margin-top: 3px;
-      width: 16px;
-      flex-shrink: 0;
+      color: #86efac; margin-top: 3px; width: 16px; flex-shrink: 0;
     }
-
     .footer-bottom {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 26px;
-      text-align: center;
-      font-size: 13px;
-      color: #64748b;
+      padding-top: 26px; text-align: center;
+      font-size: 13px; color: #64748b;
     }
 
-    /* ============ ANIMASI ============ */
     .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
+      opacity: 0; transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ============ RESPONSIVE ============ */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
       .hero h1 { font-size: clamp(32px, 5vw, 48px); }
       .materi-grid { grid-template-columns: repeat(2, 1fr); }
       .fasilitas-grid { grid-template-columns: repeat(2, 1fr); }
       .karir-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-
       .hero { padding-top: 90px; }
       .hero-grid { grid-template-columns: 1fr; gap: 50px; text-align: center; }
       .hero p { margin-left: auto; margin-right: auto; }
       .cta-group { justify-content: center; }
       .hero-badge { margin-left: auto; margin-right: auto; }
-
       .about-grid { grid-template-columns: 1fr; gap: 50px; }
       .about-img .about-logo { width: 160px; height: 160px; }
       .about-img-2 { width: 120px; height: 120px; bottom: -20px; right: -20px; }
       .about-img-2 i { font-size: 40px; }
-
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-
       .float-badge.b1 { top: 0; left: 0; }
       .float-badge.b2 { bottom: 5%; right: 0; }
       .float-badge.b3 { display: none; }
-
       .tv-frame { transform: none; }
     }
-
     @media (max-width: 700px) {
       .container { padding: 0 18px; }
       header { padding: 12px 0; }
-
       .logo-sekolah { width: 44px; height: 44px; }
       .logo-text .brand { font-size: 14px; }
       .logo-text .school { font-size: 9px; }
-
       .hero { padding-top: 80px; padding-bottom: 50px; min-height: auto; }
       .hero h1 { font-size: 32px; letter-spacing: -1.2px; }
       .hero p { font-size: 14px; margin-bottom: 26px; }
       .hero-badge { font-size: 11px; padding: 6px 14px; margin-bottom: 18px; }
-
       .cta-group { gap: 10px; }
       .btn { padding: 12px 22px; font-size: 14px; width: 100%; }
       .cta-group .btn { width: 100%; }
-
       .tv-frame { max-width: 320px; padding: 10px; border-radius: 18px; }
       .tv-content .tv-logo { width: 55px; height: 55px; }
       .tv-content h3 { font-size: 18px; }
@@ -1159,22 +601,18 @@
       .live-badge { font-size: 9px; padding: 4px 10px; }
       .tv-stand { width: 70px; height: 10px; bottom: -16px; }
       .tv-stand::after { width: 140px; height: 5px; }
-
       .float-badge { padding: 8px 12px; font-size: 10px; border-radius: 10px; }
       .float-badge i { font-size: 13px; }
       .float-badge.b1 { top: -10px; left: -10px; }
       .float-badge.b2 { bottom: 5%; right: -10px; }
-
       .stats { padding: 36px 0; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
       .stat-item h3 { font-size: 32px; }
       .stat-item p { font-size: 11px; }
-
       section { padding: 60px 0; }
       .section-header { margin-bottom: 40px; }
       .section-heading { font-size: 24px; letter-spacing: -0.8px; }
       .section-desc { font-size: 14px; }
-
       .about-img { border-radius: 22px; }
       .about-img .about-logo { width: 130px; height: 130px; padding: 8px; }
       .about-img-2 { width: 100px; height: 100px; bottom: -15px; right: -15px; border-width: 5px; }
@@ -1182,41 +620,31 @@
       .about-text h2 { font-size: 22px; }
       .about-text p { font-size: 14px; }
       .about-list li { font-size: 14px; padding: 6px 0; }
-
-      .materi-grid,
-      .fasilitas-grid,
-      .karir-grid { grid-template-columns: 1fr; gap: 16px; }
-
+      .materi-grid, .fasilitas-grid, .karir-grid { grid-template-columns: 1fr; gap: 16px; }
       .materi-card { padding: 24px 20px; border-radius: 18px; }
       .materi-icon { width: 50px; height: 50px; font-size: 22px; margin-bottom: 16px; }
       .materi-card h3 { font-size: 16px; }
       .materi-card p { font-size: 13px; }
-
       .fasilitas-item { padding: 24px 20px; border-radius: 18px; }
       .fasilitas-item i { font-size: 32px; margin-bottom: 12px; }
       .fasilitas-item h4 { font-size: 15px; }
       .fasilitas-item p { font-size: 12px; }
-
       .karir-card { padding: 24px 20px; border-radius: 16px; }
       .karir-card i { font-size: 30px; margin-bottom: 12px; }
       .karir-card h4 { font-size: 15px; }
       .karir-card p { font-size: 12px; }
-
       .cta-section { padding: 60px 0; }
       .cta-box { padding: 44px 24px; border-radius: 24px; }
       .cta-logo { width: 65px; height: 65px; }
       .cta-box h2 { font-size: 24px; margin-bottom: 14px; }
       .cta-box p { font-size: 14px; margin-bottom: 26px; }
       .cta-box .btn { width: 100%; }
-
       footer { padding: 44px 0 24px; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
       .footer-col h4 { font-size: 14px; margin-bottom: 16px; }
       .footer-bottom { font-size: 12px; padding-top: 20px; }
-
       .mobile-menu { width: 85%; max-width: 320px; }
     }
-
     @media (max-width: 380px) {
       .hero h1 { font-size: 26px; }
       .section-heading { font-size: 22px; }
@@ -1225,106 +653,60 @@
       .about-img .about-logo { width: 110px; height: 110px; }
     }
 
-    /* ============ VIEW MODE TOGGLE ============ */
+    /* VIEW TOGGLE */
     .view-toggle {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      display: flex;
-      gap: 8px;
-      background: #fff;
-      padding: 8px;
-      border-radius: 50px;
+      position: fixed; bottom: 24px; right: 24px;
+      display: flex; gap: 8px; background: #fff;
+      padding: 8px; border-radius: 50px;
       box-shadow: 0 15px 35px rgba(26, 34, 56, 0.15);
-      z-index: 200;
-      border: 1px solid rgba(26, 34, 56, 0.08);
+      z-index: 200; border: 1px solid rgba(26, 34, 56, 0.08);
     }
-
     .view-toggle button {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 50px;
-      background: transparent;
-      color: #64748b;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: inherit;
+      padding: 10px 18px; border: none; border-radius: 50px;
+      background: transparent; color: #64748b;
+      font-weight: 700; font-size: 13px; cursor: pointer;
+      transition: all 0.3s; display: flex; align-items: center;
+      gap: 6px; font-family: inherit;
     }
-
     .view-toggle button.active {
       background: linear-gradient(135deg, #16a34a, #f7b801);
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(22, 163, 74, 0.35);
+      color: #fff; box-shadow: 0 8px 20px rgba(22, 163, 74, 0.35);
     }
-
     .view-toggle button:hover:not(.active) {
-      color: #16a34a;
-      background: #f0fdf4;
+      color: #16a34a; background: #f0fdf4;
     }
-
-    /* Preview mobile frame */
     body.preview-mobile { background: #e8ecf3; }
-
     body.preview-mobile .preview-frame-wrapper {
-      max-width: 420px;
-      margin: 0 auto;
-      background: #fff;
-      min-height: 100vh;
-      position: relative;
+      max-width: 420px; margin: 0 auto; background: #fff;
+      min-height: 100vh; position: relative;
       box-shadow: 0 0 60px rgba(26, 34, 56, 0.25);
       overflow: hidden;
-      border-left: 1px solid #d4dbe6;
-      border-right: 1px solid #d4dbe6;
+      border-left: 1px solid #d4dbe6; border-right: 1px solid #d4dbe6;
     }
-
     body.preview-mobile .preview-frame-wrapper::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 140px;
-      height: 26px;
-      background: #1a2238;
-      border-radius: 0 0 18px 18px;
-      z-index: 9999;
-      pointer-events: none;
+      content: ''; position: fixed; top: 0; left: 50%;
+      transform: translateX(-50%); width: 140px; height: 26px;
+      background: #1a2238; border-radius: 0 0 18px 18px;
+      z-index: 9999; pointer-events: none;
     }
-
     body.preview-mobile header {
-      max-width: 420px;
-      left: 50%;
-      transform: translateX(-50%);
+      max-width: 420px; left: 50%; transform: translateX(-50%);
     }
-
     body.preview-mobile .view-toggle {
       right: calc(50% - 210px + 16px);
     }
-
     body.preview-mobile .mobile-menu {
-      right: auto;
-      left: 50%;
+      right: auto; left: 50%;
       transform: translateX(-50%) translateX(100%);
-      width: 85%;
-      max-width: 380px;
+      width: 85%; max-width: 380px;
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
     body.preview-mobile .mobile-menu.active {
       transform: translateX(-50%) translateX(0);
     }
-
     body.preview-mobile .menu-overlay {
-      max-width: 420px;
-      left: 50%;
-      transform: translateX(-50%);
+      max-width: 420px; left: 50%; transform: translateX(-50%);
     }
-
     @media (max-width: 480px) {
       .view-toggle { bottom: 16px; right: 16px; padding: 6px; }
       .view-toggle button { padding: 8px 14px; font-size: 12px; }
@@ -1337,16 +719,14 @@
   <div class="bg-pattern"></div>
   <div class="bg-dots"></div>
 
-  <!-- ============ HEADER ============ -->
+  <!-- HEADER -->
   <header>
     <div class="container">
       <nav>
         <div class="logo-wrap">
-          <!-- LOGO SEKOLAH -->
-          <img src="https://i.ibb.co.com/6Jq5j0c/logo-ypui.png"
-               alt="Logo YPUI Parung"
-               class="logo-sekolah"
-               onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2260%22 font-size=%2228%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
+          <!-- ✅ LOGO LOKAL -->
+          <img src="logo.png" alt="Logo YPUI Parung" class="logo-sekolah"
+               onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2262%22 font-size=%2226%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
           <div class="logo-text">
             <span class="brand">BROADCASTING</span>
             <span class="school">SMK YPUI Parung</span>
@@ -1362,21 +742,19 @@
         </ul>
 
         <button class="hamburger" id="hamburger" aria-label="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </nav>
     </div>
   </header>
 
-  <!-- ============ MOBILE MENU ============ -->
+  <!-- MOBILE MENU -->
   <div class="menu-overlay" id="menuOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-logo">
-      <img src="https://i.ibb.co.com/6Jq5j0c/logo-ypui.png"
-           alt="Logo YPUI Parung"
-           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2260%22 font-size=%2228%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
+      <!-- ✅ LOGO LOKAL -->
+      <img src="logo.png" alt="Logo YPUI Parung"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2262%22 font-size=%2226%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
       <p>SMK YPUI PARUNG</p>
     </div>
     <ul>
@@ -1388,14 +766,12 @@
     </ul>
   </div>
 
-  <!-- ============ HERO ============ -->
+  <!-- HERO -->
   <section class="hero" id="home">
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content fade-up">
-          <div class="hero-badge">
-            <i class="fas fa-circle"></i> JURUSAN UNGGULAN
-          </div>
+          <div class="hero-badge"><i class="fas fa-circle"></i> JURUSAN UNGGULAN</div>
           <h1>Produksi & Program <span class="highlight">Siaran Televisi</span></h1>
           <p>Jurusan yang membekali siswa dengan keterampilan lengkap di dunia penyiaran — dari pra-produksi, produksi, hingga pasca-produksi. Siap menjadi kreator konten televisi profesional di era digital!</p>
           <div class="cta-group">
@@ -1408,11 +784,9 @@
           <div class="tv-frame">
             <div class="tv-screen">
               <div class="tv-content">
-                <!-- LOGO DI DALAM TV -->
-                <img src="https://i.ibb.co.com/6Jq5j0c/logo-ypui.png"
-                     alt="Logo YPUI"
-                     class="tv-logo"
-                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2260%22 font-size=%2228%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
+                <!-- ✅ LOGO LOKAL DI DALAM TV -->
+                <img src="logo.png" alt="Logo YPUI" class="tv-logo"
+                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2262%22 font-size=%2226%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
                 <div class="live-badge">LIVE</div>
                 <h3>ON AIR</h3>
                 <p>Broadcasting Studio YPUI</p>
@@ -1429,45 +803,29 @@
     </div>
   </section>
 
-  <!-- ============ STATS ============ -->
+  <!-- STATS -->
   <div class="stats">
     <div class="container">
       <div class="stats-grid">
-        <div class="stat-item fade-up">
-          <h3>3</h3>
-          <p>TAHUN PEMBELAJARAN</p>
-        </div>
-        <div class="stat-item fade-up">
-          <h3>100%</h3>
-          <p>PRAKTIK & PROYEK</p>
-        </div>
-        <div class="stat-item fade-up">
-          <h3>10+</h3>
-          <p>MATA PELAJARAN</p>
-        </div>
-        <div class="stat-item fade-up">
-          <h3>5+</h3>
-          <p>PROSPEK KARIR</p>
-        </div>
+        <div class="stat-item fade-up"><h3>3</h3><p>TAHUN PEMBELAJARAN</p></div>
+        <div class="stat-item fade-up"><h3>100%</h3><p>PRAKTIK & PROYEK</p></div>
+        <div class="stat-item fade-up"><h3>10+</h3><p>MATA PELAJARAN</p></div>
+        <div class="stat-item fade-up"><h3>5+</h3><p>PROSPEK KARIR</p></div>
       </div>
     </div>
   </div>
 
-  <!-- ============ TENTANG ============ -->
+  <!-- TENTANG -->
   <section class="about" id="tentang">
     <div class="container">
       <div class="about-grid">
         <div class="about-visual fade-up">
           <div class="about-img">
-            <!-- LOGO BESAR DI ABOUT -->
-            <img src="https://i.ibb.co.com/6Jq5j0c/logo-ypui.png"
-                 alt="Logo YPUI Parung"
-                 class="about-logo"
-                 onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2260%22 font-size=%2228%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
+            <!-- ✅ LOGO BESAR LOKAL -->
+            <img src="logo.png" alt="Logo YPUI Parung" class="about-logo"
+                 onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2262%22 font-size=%2226%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
           </div>
-          <div class="about-img-2">
-            <i class="fas fa-satellite-dish"></i>
-          </div>
+          <div class="about-img-2"><i class="fas fa-satellite-dish"></i></div>
         </div>
 
         <div class="about-text fade-up">
@@ -1475,7 +833,6 @@
           <h2>Mencetak Generasi Kreator Penyiaran Profesional</h2>
           <p>Jurusan <strong>Produksi & Program Siaran Televisi</strong> di SMK YPUI Parung adalah program keahlian yang mempersiapkan siswa untuk menguasai seluruh aspek produksi siaran televisi dan konten digital.</p>
           <p>Dengan kurikulum berbasis industri dan 70% praktik, siswa dibimbing langsung oleh tenaga pengajar berpengalaman serta praktisi dari dunia penyiaran.</p>
-
           <ul class="about-list">
             <li><i class="fas fa-check"></i> Kurikulum standar industri penyiaran nasional</li>
             <li><i class="fas fa-check"></i> Praktik langsung di studio TV mini sekolah</li>
@@ -1487,7 +844,7 @@
     </div>
   </section>
 
-  <!-- ============ MATERI ============ -->
+  <!-- MATERI -->
   <section class="materi" id="materi">
     <div class="container">
       <div class="section-header fade-up">
@@ -1495,38 +852,32 @@
         <h2 class="section-heading">Apa Saja yang Akan Dipelajari?</h2>
         <p class="section-desc">Materi disusun bertahap dari dasar hingga mahir, mencakup seluruh alur produksi siaran televisi.</p>
       </div>
-
       <div class="materi-grid">
         <div class="materi-card fade-up">
           <div class="materi-icon c1"><i class="fas fa-camera-retro"></i></div>
           <h3>Teknik Pengambilan Gambar</h3>
           <p>Menguasai berbagai teknik shooting, komposisi, movement kamera, dan tata cahaya untuk produksi siaran.</p>
         </div>
-
         <div class="materi-card fade-up">
           <div class="materi-icon c2"><i class="fas fa-pen-fancy"></i></div>
           <h3>Penulisan Naskah & Skenario</h3>
           <p>Belajar menulis naskah berita, script program, hingga storyboard untuk produksi konten televisi.</p>
         </div>
-
         <div class="materi-card fade-up">
           <div class="materi-icon c3"><i class="fas fa-microphone-alt"></i></div>
           <h3>Penyiaran & Announcing</h3>
           <p>Latihan menjadi presenter, reporter, pembaca berita, dan penguasaan teknik vokal serta artikulasi.</p>
         </div>
-
         <div class="materi-card fade-up">
           <div class="materi-icon c4"><i class="fas fa-sliders-h"></i></div>
           <h3>Tata Audio & Suara</h3>
           <p>Mengelola audio produksi, mixing, dubbing, dan pengoperasian peralatan sound system studio.</p>
         </div>
-
         <div class="materi-card fade-up">
           <div class="materi-icon c5"><i class="fas fa-film"></i></div>
           <h3>Editing Video</h3>
           <p>Menguasai software editing profesional seperti Adobe Premiere, After Effects, dan DaVinci Resolve.</p>
         </div>
-
         <div class="materi-card fade-up">
           <div class="materi-icon c6"><i class="fas fa-tasks"></i></div>
           <h3>Manajemen Produksi</h3>
@@ -1536,7 +887,7 @@
     </div>
   </section>
 
-  <!-- ============ FASILITAS ============ -->
+  <!-- FASILITAS -->
   <section class="fasilitas" id="fasilitas">
     <div class="container">
       <div class="section-header fade-up">
@@ -1544,48 +895,18 @@
         <h2 class="section-heading">Fasilitas Praktik Lengkap</h2>
         <p class="section-desc">Didukung peralatan standar industri untuk menunjang pembelajaran praktik siswa.</p>
       </div>
-
       <div class="fasilitas-grid">
-        <div class="fasilitas-item fade-up">
-          <i class="fas fa-tv"></i>
-          <h4>Studio Mini TV</h4>
-          <p>Ruang studio dengan green screen, lighting, dan backdrop untuk latihan siaran.</p>
-        </div>
-
-        <div class="fasilitas-item fade-up">
-          <i class="fas fa-video"></i>
-          <h4>Kamera Profesional</h4>
-          <p>Kamera DSLR, camcorder, dan perlengkapan shooting standar broadcast.</p>
-        </div>
-
-        <div class="fasilitas-item fade-up">
-          <i class="fas fa-headphones"></i>
-          <h4>Ruang Audio & Dubbing</h4>
-          <p>Studio perekaman suara kedap suara dengan peralatan mixing modern.</p>
-        </div>
-
-        <div class="fasilitas-item fade-up">
-          <i class="fas fa-desktop"></i>
-          <h4>Lab Editing Komputer</h4>
-          <p>Komputer berspesifikasi tinggi dengan software editing profesional.</p>
-        </div>
-
-        <div class="fasilitas-item fade-up">
-          <i class="fas fa-satellite-dish"></i>
-          <h4>Ruang Kontrol</h4>
-          <p>Ruang switching dan monitoring untuk latihan produksi multi-kamera.</p>
-        </div>
-
-        <div class="fasilitas-item fade-up">
-          <i class="fas fa-book"></i>
-          <h4>Perpustakaan Digital</h4>
-          <p>Koleksi referensi broadcasting dan akses e-learning pendukung.</p>
-        </div>
+        <div class="fasilitas-item fade-up"><i class="fas fa-tv"></i><h4>Studio Mini TV</h4><p>Ruang studio dengan green screen, lighting, dan backdrop untuk latihan siaran.</p></div>
+        <div class="fasilitas-item fade-up"><i class="fas fa-video"></i><h4>Kamera Profesional</h4><p>Kamera DSLR, camcorder, dan perlengkapan shooting standar broadcast.</p></div>
+        <div class="fasilitas-item fade-up"><i class="fas fa-headphones"></i><h4>Ruang Audio & Dubbing</h4><p>Studio perekaman suara kedap suara dengan peralatan mixing modern.</p></div>
+        <div class="fasilitas-item fade-up"><i class="fas fa-desktop"></i><h4>Lab Editing Komputer</h4><p>Komputer berspesifikasi tinggi dengan software editing profesional.</p></div>
+        <div class="fasilitas-item fade-up"><i class="fas fa-satellite-dish"></i><h4>Ruang Kontrol</h4><p>Ruang switching dan monitoring untuk latihan produksi multi-kamera.</p></div>
+        <div class="fasilitas-item fade-up"><i class="fas fa-book"></i><h4>Perpustakaan Digital</h4><p>Koleksi referensi broadcasting dan akses e-learning pendukung.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ KARIR ============ -->
+  <!-- KARIR -->
   <section class="karir" id="karir">
     <div class="container">
       <div class="section-header fade-up">
@@ -1593,56 +914,24 @@
         <h2 class="section-heading">Lulusan Siap Berkarya Di Mana Saja</h2>
         <p class="section-desc">Beragam peluang karier di industri kreatif dan penyiaran menanti lulusan jurusan ini.</p>
       </div>
-
       <div class="karir-grid">
-        <div class="karir-card fade-up">
-          <i class="fas fa-user-tie"></i>
-          <h4>Presenter / Reporter</h4>
-          <p>Membawakan acara TV, reportase lapangan, dan wawancara.</p>
-        </div>
-
-        <div class="karir-card fade-up">
-          <i class="fas fa-camera"></i>
-          <h4>Juru Kamera</h4>
-          <p>Camera person profesional untuk produksi TV & film.</p>
-        </div>
-
-        <div class="karir-card fade-up">
-          <i class="fas fa-cut"></i>
-          <h4>Video Editor</h4>
-          <p>Mengedit konten untuk TV, YouTube, dan platform digital.</p>
-        </div>
-
-        <div class="karir-card fade-up">
-          <i class="fas fa-lightbulb"></i>
-          <h4>Produser Program</h4>
-          <p>Merancang dan memimpin produksi sebuah program siaran.</p>
-        </div>
-
-        <div class="karir-card fade-up">
-          <i class="fas fa-broadcast-tower"></i>
-          <h4>Content Creator</h4>
-          <p>Membangun channel digital sendiri di era media baru.</p>
-        </div>
-
-        <div class="karir-card fade-up">
-          <i class="fas fa-microphone"></i>
-          <h4>Audio Engineer</h4>
-          <p>Menangani tata suara untuk siaran dan produksi konten.</p>
-        </div>
+        <div class="karir-card fade-up"><i class="fas fa-user-tie"></i><h4>Presenter / Reporter</h4><p>Membawakan acara TV, reportase lapangan, dan wawancara.</p></div>
+        <div class="karir-card fade-up"><i class="fas fa-camera"></i><h4>Juru Kamera</h4><p>Camera person profesional untuk produksi TV & film.</p></div>
+        <div class="karir-card fade-up"><i class="fas fa-cut"></i><h4>Video Editor</h4><p>Mengedit konten untuk TV, YouTube, dan platform digital.</p></div>
+        <div class="karir-card fade-up"><i class="fas fa-lightbulb"></i><h4>Produser Program</h4><p>Merancang dan memimpin produksi sebuah program siaran.</p></div>
+        <div class="karir-card fade-up"><i class="fas fa-broadcast-tower"></i><h4>Content Creator</h4><p>Membangun channel digital sendiri di era media baru.</p></div>
+        <div class="karir-card fade-up"><i class="fas fa-microphone"></i><h4>Audio Engineer</h4><p>Menangani tata suara untuk siaran dan produksi konten.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CTA ============ -->
+  <!-- CTA -->
   <section class="cta-section">
     <div class="container">
       <div class="cta-box fade-up">
-        <!-- LOGO DI CTA -->
-        <img src="https://i.ibb.co.com/6Jq5j0c/logo-ypui.png"
-             alt="Logo YPUI"
-             class="cta-logo"
-             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2260%22 font-size=%2228%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
+        <!-- ✅ LOGO LOKAL -->
+        <img src="logo.png" alt="Logo YPUI" class="cta-logo"
+             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2262%22 font-size=%2226%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
         <h2>Siap Jadi Bagian Dunia Penyiaran?</h2>
         <p>Bergabunglah bersama Jurusan Produksi & Program Siaran Televisi SMK YPUI Parung dan wujudkan mimpimu menjadi kreator konten profesional!</p>
         <a href="#" class="btn btn-white"><i class="fas fa-graduation-cap"></i> Daftar Sekarang</a>
@@ -1650,16 +939,15 @@
     </div>
   </section>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
           <div class="footer-brand">
-            <!-- LOGO DI FOOTER -->
-            <img src="https://i.ibb.co.com/6Jq5j0c/logo-ypui.png"
-                 alt="Logo YPUI Parung"
-                 onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2260%22 font-size=%2228%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
+            <!-- ✅ LOGO LOKAL -->
+            <img src="logo.png" alt="Logo YPUI Parung"
+                 onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%2316a34a%22/><text x=%2250%22 y=%2262%22 font-size=%2226%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>YPUI</text></svg>'">
             <div class="footer-brand-text">
               <div class="brand">SMK YPUI PARUNG</div>
               <div class="school">SEKOLAH INOVASI</div>
@@ -1673,7 +961,6 @@
             <a href="#"><i class="fab fa-tiktok"></i></a>
           </div>
         </div>
-
         <div class="footer-col">
           <h4>Navigasi</h4>
           <ul>
@@ -1684,7 +971,6 @@
             <li><a href="#karir">Prospek Karir</a></li>
           </ul>
         </div>
-
         <div class="footer-col">
           <h4>Kontak Sekolah</h4>
           <ul>
@@ -1695,27 +981,20 @@
           </ul>
         </div>
       </div>
-
       <div class="footer-bottom">
         &copy; 2025 SMK YPUI Parung — Jurusan Produksi & Program Siaran Televisi. Dibuat dengan <i class="fas fa-heart" style="color: #16a34a;"></i> untuk generasi kreator.
       </div>
     </div>
   </footer>
 
-  <!-- ============ VIEW TOGGLE ============ -->
+  <!-- VIEW TOGGLE -->
   <div class="view-toggle" id="viewToggle">
-    <button id="btnDesktop" class="active">
-      <i class="fas fa-desktop"></i> <span>Desktop</span>
-    </button>
-    <button id="btnMobile">
-      <i class="fas fa-mobile-alt"></i> <span>Mobile</span>
-    </button>
+    <button id="btnDesktop" class="active"><i class="fas fa-desktop"></i> <span>Desktop</span></button>
+    <button id="btnMobile"><i class="fas fa-mobile-alt"></i> <span>Mobile</span></button>
   </div>
 
-  <!-- ============ SCRIPT ============ -->
   <script>
     (function() {
-      // Fade-up Animation
       const fadeElements = document.querySelectorAll('.fade-up');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1724,7 +1003,6 @@
       }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       fadeElements.forEach(el => observer.observe(el));
 
-      // Header Shadow
       const header = document.querySelector('header');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 40) {
@@ -1736,7 +1014,6 @@
         }
       });
 
-      // Hamburger
       const hamburger = document.getElementById('hamburger');
       const mobileMenu = document.getElementById('mobileMenu');
       const menuOverlay = document.getElementById('menuOverlay');
@@ -1747,17 +1024,14 @@
         menuOverlay.classList.toggle('active');
         document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
       }
-
       hamburger.addEventListener('click', toggleMenu);
       menuOverlay.addEventListener('click', toggleMenu);
-
       mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
           if (mobileMenu.classList.contains('active')) toggleMenu();
         });
       });
 
-      // Smooth Scroll
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           const targetId = this.getAttribute('href');
@@ -1772,7 +1046,6 @@
         });
       });
 
-      // ===== VIEW MODE TOGGLE =====
       const btnDesktop = document.getElementById('btnDesktop');
       const btnMobile = document.getElementById('btnMobile');
       const body = document.body;
@@ -1822,7 +1095,6 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      // Tutup menu saat resize
       window.addEventListener('resize', () => {
         if (window.innerWidth > 900 && mobileMenu.classList.contains('active')) toggleMenu();
       });
